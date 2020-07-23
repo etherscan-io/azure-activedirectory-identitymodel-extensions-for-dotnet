@@ -28,7 +28,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.IdentityModel.Logging;
 
@@ -134,13 +133,16 @@ namespace Microsoft.IdentityModel.Xml
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            int hashCode = 1279802945;
-            hashCode = hashCode * -1521134295 + EqualityComparer<IssuerSerial>.Default.GetHashCode(IssuerSerial);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(SKI);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(SubjectName);
-            hashCode = hashCode * -1521134295 + EqualityComparer<ICollection<string>>.Default.GetHashCode(Certificates);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CRL);
-            return hashCode;
+            unchecked
+            {
+                int hashCode = 1279802945;
+                hashCode = hashCode * -1521134295 + EqualityComparer<IssuerSerial>.Default.GetHashCode(IssuerSerial);
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(SKI);
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(SubjectName);
+                hashCode = hashCode * -1521134295 + EqualityComparer<ICollection<string>>.Default.GetHashCode(Certificates);
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CRL);
+                return hashCode;
+            }
         }
     }
 }

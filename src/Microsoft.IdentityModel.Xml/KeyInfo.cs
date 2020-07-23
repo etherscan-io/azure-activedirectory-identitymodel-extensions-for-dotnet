@@ -128,14 +128,17 @@ namespace Microsoft.IdentityModel.Xml
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            int hashCode = 1840145486;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Id);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Prefix);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(KeyName);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(RetrievalMethodUri);
-            hashCode = hashCode * -1521134295 + EqualityComparer<RSAKeyValue>.Default.GetHashCode(RSAKeyValue);
-            hashCode = hashCode * -1521134295 + EqualityComparer<ICollection<X509Data>>.Default.GetHashCode(X509Data);
-            return hashCode;
+            unchecked
+            {
+                int hashCode = 1840145486;
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Id);
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Prefix);
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(KeyName);
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(RetrievalMethodUri);
+                hashCode = hashCode * -1521134295 + EqualityComparer<RSAKeyValue>.Default.GetHashCode(RSAKeyValue);
+                hashCode = hashCode * -1521134295 + EqualityComparer<ICollection<X509Data>>.Default.GetHashCode(X509Data);
+                return hashCode;
+            }
         }
 
         /// <summary>
